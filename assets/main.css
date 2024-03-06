@@ -1,0 +1,439 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+:root 
+{
+
+    --main-color      : #fb604c;
+    --dark-main-color : #d63722;
+
+    --text-color      : #f5f5f5;
+
+    --f-dark          : #020202;
+    --s-dark          : #121212;
+    --t-dark          : #222222;
+
+    --success         : #5ff475;
+    --failure         : #f45f5f;
+
+}
+
+* 
+{
+
+    margin          :                   0px;
+    padding         :                   0px;
+    font-family     : 'Poppins', sans-serif;
+    box-sizing      :            border-box;
+    text-decoration :                  none;
+
+}
+
+body { background-color: var(--f-dark); }
+
+input, select, button 
+{
+
+    display   :             block;
+    outline   :              none;
+    border    :              none;
+    font-size :               9pt;
+    color     : var(--text-color);
+    opacity   :               0.8;
+
+}
+
+input, select 
+{
+
+    height           :                      40px;
+    background-color :             var(--f-dark);
+    box-shadow       : 0px 0px 3px var(--f-dark);
+    border-radius    :                       3px;
+
+}
+
+input  { padding: 0px 10px; }
+
+select { padding: 0px 12px; }
+
+select, button { cursor: pointer; }
+
+form.form div.form__failure 
+{
+
+    display         :             flex;
+    justify-content :           center;
+    margin          : 0px 0px 40px 0px;
+
+}
+
+form.form div.form__failure div.form__failure-center 
+{
+
+    padding          :                  10px 20px;
+    width            :                      260px;
+    background-color :   rgba(244, 95, 95, 0.6);
+    box-shadow       : 0px 0px 3px var(--failure);
+    border-radius    :                        3px;
+
+}
+
+form.form div.form__failure div.form__failure-center p 
+{
+
+    font-size  :               9pt;
+    color      : var(--text-color);
+    text-align :            center;
+
+}
+
+form.form button 
+{
+
+    padding          :                      0px 16px;
+    height           :                          40px;
+    background-color :             var(--main-color);
+    box-shadow       : 0px 0px 3px var(--main-color);
+    border-radius    :                         200px;
+    transition       :                          0.6s;
+
+}
+
+form.form button i 
+{
+
+    margin-right : 8px;
+    opacity      : 0.6;
+
+}
+
+form.form button:hover 
+{
+
+    background-color :             var(--dark-main-color);
+    box-shadow       : 0px 0px 3px var(--dark-main-color);
+
+}
+
+div.modal 
+{
+
+    position         :                fixed;
+    z-index          :                    1;
+    top              :                  0px;
+    left             :                  0px;
+    width            :                 100%;
+    height           :                 100%;
+    background-color : rgba(2, 2, 2, 0.6);
+    display          :                 flex;
+    justify-content  :               center;
+    align-items      :               center;
+
+}
+
+div.modal main.modal__main
+{
+
+    background-color :             var(--s-dark);
+    box-shadow       : 0px 0px 3px var(--s-dark);
+    border-radius    :                       3px;
+
+}
+
+div.modal main.modal__main div.modal__main-top 
+{
+
+    padding                 :                       8px;
+    background-color        :             var(--t-dark);
+    box-shadow              : 0px 0px 3px var(--t-dark);
+    border-top-left-radius  :                       3px;
+    border-top-right-radius :                       3px;
+    display                 :                      flex;
+    justify-content         :             space-between;
+    gap                     :                      50px;
+
+}
+
+div.modal main.modal__main div.modal__main-top p,
+div.modal main.modal__main div.modal__main-top button 
+{
+
+    font-size :               9pt;
+    color     : var(--text-color);
+
+}
+
+div.modal main.modal__main div.modal__main-top p { opacity: 0.6; }
+
+div.modal main.modal__main div.modal__main-top button 
+{ 
+    
+    opacity    :  0.3; 
+    background : none;
+
+}
+
+div#system_messages div.system_messages__message { padding: 10px 50px; }
+
+div#system_messages div.system_messages__message p 
+{
+
+    font-size  :               9pt;
+    color      : var(--text-color);
+    text-align :            center;
+
+}
+
+div#system_messages div.system_messages__message-success 
+{
+
+    background-color :  rgba(95, 244, 117, 0.6);
+    box-shadow       : 0px 0px 3px var(--success);
+
+}
+
+div#system_messages div.system_messages__message-failure 
+{
+
+    background-color :   rgba(244, 95, 95, 0.6);
+    box-shadow       : 0px 0px 3px var(--failure);
+
+}
+
+section#task 
+{
+    
+    display         :   flex;
+    justify-content : center;
+    margin-top      :  100px;
+
+}
+
+section#task main#task__main 
+{
+
+    padding          :                      25px;
+    background-color :             var(--s-dark);
+    box-shadow       : 0px 0px 3px var(--s-dark);
+    border-radius    :                       3px;
+
+}
+
+section#task main#task__main div.task__main-form form div.task__main-form__main 
+{
+
+    display : flex;
+    gap     : 30px;
+
+}
+
+section#task main#task__main div.task__main-form form div.task__main-form__main input  { width: 350px; }
+
+section#task main#task__main div.task__main-form form div.task__main-form__main select { width: 180px; }
+
+section#task main#task__main div.task__main-form form div.task__main-form__main button { margin-left: 40px; }
+
+section#categories 
+{
+
+    display         :      flex;
+    justify-content :    center;
+    margin          : 100px 0px;
+
+}
+
+section#categories main#categories__main 
+{
+
+    padding          :       15px 25px 10px 25px;
+    background-color :             var(--s-dark);
+    box-shadow       : 0px 0px 3px var(--s-dark);
+    border-radius    :                       3px;
+
+}
+
+section#categories main#categories__main div#categories__main-add_category 
+{
+
+    display         :   flex;
+    justify-content : center;
+
+}
+
+section#categories main#categories__main div#categories__main-add_category button 
+{
+
+    background :              none;
+    color      : var(--main-color);
+
+}
+
+section#categories main#categories__main div#categories__main-add_category button i 
+{
+
+    margin-right : 8px;
+    opacity      : 0.6;
+
+}
+
+section#categories main#categories__main div#categories__main-list { margin-top: 40px; }
+
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category 
+{
+
+    padding          :                   10px 15px;
+    width            :                       450px;
+    background-color :               var(--f-dark);
+    border-left      : 3px solid var(--main-color);
+    border-radius    :                         3px;
+    display          :                        flex;
+    justify-content  :               space-between;
+    align-items      :                      center;
+    margin           :                    15px 0px;
+
+}
+
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category a:first-child,
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right span,
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right div.categories__main-list__category-right__actions a,
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right div.categories__main-list__category-right__actions button 
+{
+
+    font-size: 9pt;
+
+}
+
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category a:first-child,
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right span 
+{
+    
+    color   : var(--text-color);
+    opacity :               0.6;
+
+}
+
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right div.categories__main-list__category-right__actions a,
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right div.categories__main-list__category-right__actions button
+{
+
+    color   : var(--main-color);
+    opacity :               0.8;
+
+}
+
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right span
+{
+
+    padding          :                   3px 0px;
+    width            :                      80px;
+    background-color :             var(--s-dark);
+    box-shadow       : 0px 0px 3px var(--s-dark);
+    border-radius    :                     200px;
+    text-align       :                    center;
+
+}
+
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right div.categories__main-list__category-right__actions button { background: none; }
+
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right div.categories__main-list__category-right__actions a i,
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right div.categories__main-list__category-right__actions button i
+{
+
+    margin-right : 8px;
+    opacity      : 0.6;
+
+}
+
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right,
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right div.categories__main-list__category-right__actions
+{
+
+    display: flex;
+
+}
+
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right 
+{ 
+
+    align-items : center;
+    gap         :   30px; 
+
+}
+
+section#categories main#categories__main div#categories__main-list div.categories__main-list__category div.categories__main-list__category-right div.categories__main-list__category-right__actions { gap: 20px; }
+
+div#add_category_modal { display: none; }
+
+div.category_modal main.category_modal__main div.category_modal__main-box { padding: 25px; }
+
+div.category_modal main.category_modal__main div.category_modal__main-box input { width: 260px; }
+
+div.category_modal main.category_modal__main div.category_modal__main-box button { margin: 30px auto 0px auto; }
+
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box { padding: 10px 25px; }
+
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box div.tasks_modal__main-box__task
+{
+
+    padding          :                   10px 15px;
+    width            :                       800px;
+    background-color :               var(--f-dark);
+    border-left      : 2px solid var(--main-color);
+    border-radius    :                         3px;
+    display          :                        flex;
+    justify-content  :               space-between;
+    align-items      :                      center;
+    margin           :                    15px 0px;
+
+}
+
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box div.tasks_modal__main-box__task div.tasks_modal__main-box__task-infos,
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box div.tasks_modal__main-box__task div.tasks_modal__main-box__task-actions
+{
+
+    display: flex;
+
+}
+
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box div.tasks_modal__main-box__task div.tasks_modal__main-box__task-infos   { gap: 30px; }
+
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box div.tasks_modal__main-box__task div.tasks_modal__main-box__task-actions { gap: 20px; }
+
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box div.tasks_modal__main-box__task div.tasks_modal__main-box__task-infos p,
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box div.tasks_modal__main-box__task div.tasks_modal__main-box__task-actions a,
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box div.tasks_modal__main-box__task div.tasks_modal__main-box__task-actions button 
+{
+
+    font-size :               9pt;
+    color     : var(--text-color);
+    opacity   :               0.6;
+
+}
+
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box div.tasks_modal__main-box__task div.tasks_modal__main-box__task-infos p:first-child { opacity: 0.8; }
+
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box div.tasks_modal__main-box__task div.tasks_modal__main-box__task-actions a,
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box div.tasks_modal__main-box__task div.tasks_modal__main-box__task-actions button 
+{
+
+    width            :                      28px;
+    height           :                      28px;
+    background-color :             var(--s-dark);
+    box-shadow       : 0px 0px 3px var(--s-dark);
+    border-radius    :                     200px;
+    display          :                      flex;
+    justify-content  :                    center;
+    align-items      :                    center;
+    transition       :                      0.6s;
+
+}
+
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box div.tasks_modal__main-box__task div.tasks_modal__main-box__task-actions a:hover,
+div#tasks_modal main#tasks_modal__main div#tasks_modal__main-box div.tasks_modal__main-box__task div.tasks_modal__main-box__task-actions button:hover 
+{
+
+    background-color :             var(--t-dark);
+    box-shadow       : 0px 0px 3px var(--t-dark);
+
+}

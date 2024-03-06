@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TodoList</title>
+
+    <link rel="stylesheet" href="/main.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div id="system_messages">
+
+        {{#if success}} <div class="system_messages__message system_messages__message-success"><p>{{success}}</p></div> {{/if}}
+
+        {{#if failure}} <div class="system_messages__message system_messages__message-failure"><p>{{failure}}</p></div> {{/if}}
+
+    </div>
+
+    <section id="task">
+        <main id="task__main">
+
+            {{#if edit_task}}
+
+                <div class="task__main-form">
+                    <form action="/tasks/edit/{{task_code}}/action" method="post" class="form">
+
+                        {{#if edit_task_form_errors}}
+                            {{#each edit_task_form_errors}}
+
+                                <div class="form__failure"><div class="form__failure-center"><p>{{this}}</p></div></div>
+
+                            {{/each}}
+                        {{/if}}
+
+                        <div class="task__main-form__main">
+
+                            <input type="text" name="task" placeholder="Edit Task..." value="{{task}}">
+
+                            <select name="task_category" id="task_category_id"><option value="task_category">Category</option>
+                            </select>
+
+                            <button type="submit"><i class="fa-solid fa-save"></i>Save</button>
+
+                        </div>
+
+                    </form>
+                </div>
+
+            {{else}}
+
+                <div class="task__main-form">
+                    <form action="/tasks/add" method="post" class="form">
+
+                        {{#if add_task_form_errors}}
+                            {{#each add_task_form_errors}}
+                            
+                                <div class="form__failure"><div class="form__failure-center"><p>{{this}}</p></div></div>
+
+                            {{/each}}
+                        {{/if}} 
+
+                        <div class="task__main-form__main">
+
+                            <input type="text" name="task" placeholder="Add Task...">
+
+                            <select name="task_category" id="task_category_id"><option value="task_category">Category</option>
+                            </select>
+
+                            <button type="submit"><i class="fa-solid fa-plus"></i>Add Task</button>
+
+                        </div>
+
+                    </form>
+                </div>
+
+            {{/if}}
+
+        </main>
+    </section>
+
+    <section id="categories">
+        <main id="categories__main">
+
+            <div id="categories__main-add_category"><button type="button" onclick="open_modal('id', 'add_category_modal')"><i class="fa-solid fa-plus"></i>Add Category</button></div>
+
+            <div id="categories__main-list">
+
+                <!-- JavaScript Dinamic Loading -->
+
+            </div>
+
+        </main>
+    </section>
+
+    <div class="category_modal modal_main_class modal" id="add_category_modal">
+        <main class="category_modal__main modal__main">
+
+            <div class="modal__main-top">
+                <p>Add Category</p><button type="button"><i class="modal__main-top__close fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="category_modal__main-box">
+                <form action="/tasks/categories/add" method="post" class="form">
+
+                    {{#if add_category_form_error}} <div class="form__failure"><div class="form__failure-center"><p>{{add_category_form_error}}</p></div></div> {{/if}}
+
+                    <input type="text" name="category" placeholder="Category">
+                    <button type="submit"><i class="fa-solid fa-plus"></i>Add Category</button>
+
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+    {{#if edit_category}}
+
+        <div class="category_modal modal_main_class modal" id="edit_category_modal">
+            <main class="category_modal__main modal__main">
+
+                <div class="modal__main-top">
+                    <p>Edit Category</p><button type="button"><i class="modal__main-top__close fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div class="category_modal__main-box">
+                    <form action="/tasks/categories/edit/{{category_code}}/action" method="post" class="form">
+                    
+                        {{#if edit_category_form_error}} <div class="form__failure"><div class="form__failure-center"><p>{{edit_category_form_error}}</p></div></div> {{/if}}
+
+                        <input type="text" name="category" placeholder="Category" value="{{category_name}}">
+                        <button type="submit"><i class="fa-solid fa-save"></i>Save</button>
+
+                    </form>
+                </div>
+
+            </main>
+        </div>
+
+    {{/if}}
+
+    {{#if tasks_list}}
+
+        <div class="modal_main_class modal" id="tasks_modal">
+            <main class="modal__main" id="tasks_modal__main">
+
+                <div class="modal__main-top">
+                    <p>Tasks - {{category_name}}</p><button type="button"><i class="modal__main-top__close fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div id="tasks_modal__main-box">
+                    
+                    {{#each tasks}}
+
+                        <div class="tasks_modal__main-box__task">
+                            <div class="tasks_modal__main-box__task-infos">
+                                <p>{{this.task}}</p><p>{{this.created_at}}</p><p>Status: {{this.status}}</p>
+                            </div>
+
+                            <div class="tasks_modal__main-box__task-actions">
+                                <a href="/tasks/edit/{{this.code}}"><i class="fa-solid fa-pen-to-square"></i></a>
+
+                                <button type="button" onclick="delete_task({{this.code}})"><i class="fa-solid fa-trash"></i></button>
+                                <button type="button" onclick="update_task_status({{this.code}})"><i class="fa-solid fa-check"></i></button>
+                            </div>
+                        </div>
+
+                    {{/each}}
+
+                </div>
+
+            </main>
+        </div>
+
+    {{/if}}
+
+    {{#if add_category_form_failure}}
+
+        <script type="text/javascript">
+        
+            const add_category_form_modal = document.getElementById('add_category_modal');
+
+            add_category_form_modal.style.display = 'flex';
+
+        </script>
+
+    {{/if}}
+
+    <script type="text/javascript" src="/javascript/generics/modal.js"></script>
+    <script type="text/javascript" src="/javascript/pages/index/main.js"></script>
+    
+</body>
+</html>
